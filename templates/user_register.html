@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/style.css">
+
+<div class="container">
+    <h1>Create a Free Account</h1>
+    <p>Fill in the details below to register.</p>
+    <hr>
+
+    <form method="post" action="/register">
+        <label>User ID *</label>
+        <input name="id" type="number" required placeholder="Enter user ID" />
+
+        <label>Name *</label>
+        <input name="name" type="text" required placeholder="Full name" />
+
+        <label>Designation *</label>
+        <input name="designation" type="text" required placeholder="Your designation" />
+
+        <label>Team *</label>
+        <input name="team" type="text" required placeholder="Your team" />
+
+        <label>Email Address *</label>
+        <input name="email" type="email" required placeholder="Email" />
+
+        <label>Username *</label>
+        <input name="username" type="text" required placeholder="Choose a username" />
+
+        <label>Password *</label>
+        <div style="position: relative;">
+            <input name="password" type="password" required id="register-password" placeholder="Choose a password" />
+            <span id="eye-icon" class="toggle-password" onclick="togglePassword()" style="display: none;">👁</span>
+        </div>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="signin">Register</button>
+    </form>
+
+    <hr>
+    <p style="text-align: center;">Already have an account? <a href="/">Login</a></p>
+</div>
+
+<script>
+function togglePassword() {
+    const input = document.getElementById('register-password');
+    input.type = input.type === 'password' ? 'text' : 'password';
+}
+</script>
+{% endblock %}

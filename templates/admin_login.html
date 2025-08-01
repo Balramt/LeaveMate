@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/style.css">
+
+<div class="container">
+    <h1>Admin Login</h1>
+    <p>Please enter your admin credentials</p>
+    <hr>
+
+    <form method="post" action="/admin/login">
+        <label>Username *</label>
+        <input name="username" type="text" required placeholder="Enter admin username" />
+
+        <label>Password *</label>
+        <div style="position: relative;">
+            <input name="password" type="password" required id="admin-password" placeholder="Password" />
+            <span id="eye-icon" class="toggle-password" onclick="togglePassword()" style="display: none;">👁</span>
+        </div>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="signin">Sign in as Admin</button>
+    </form>
+
+    <hr>
+    <p style="text-align: center;">Not a member?</p>
+    <button class="register">Create a free account</button>
+    <p style="text-align: center;">Back to <a href="/">User Login</a></p>
+</div>
+
+<script>
+function togglePassword() {
+    const input = document.getElementById('admin-password');
+    input.type = input.type === 'password' ? 'text' : 'password';
+}
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/style.css">
+
+<!-- Floating Admin Login Button -->
+<a href="/admin" class="admin-login-button">Admin Login</a>
+
+<div class="container">
+    <h1>Welcome back! <br> Buddy!</h1>
+    <p>Please enter your details below to sign in</p>
+    <hr>
+<form method="post" action="/Userlogin">
+    <label>Username *</label>
+    <input name="username" type="text" required placeholder="Enter username" />
+
+    <label>Password *</label>
+    <div style="position: relative;">
+        <input name="password" type="password" required id="password" placeholder="Password" />
+        <span id="eye-icon" class="toggle-password" onclick="togglePassword()" style="display: none;">👁</span>
+    </div>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <a href="#" class="forgot">Forgot your password?</a>
+
+    <button type="submit" class="signin">Sign in</button>
+</form>
+
+
+    <hr>
+    <p style="text-align: center;">Not a member?</p>
+    <form method="get" action="/register">
+        <button class="register">Create a free account</button>
+    </form>
+
+</div>
+
+<script>
+function togglePassword() {
+    const input = document.getElementById('password');
+    input.type = input.type === 'password' ? 'text' : 'password';
+}
+</script>
+{% endblock %}

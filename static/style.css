@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+p {
+    margin-top: 0.5rem;
+    font-size: 14px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; /* Ensures full-width stacking */
+}
+
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block; /* Ensures full-width stacking */
+}
+
+button {
+    width: 100%;
+    border-radius: 25px;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button.signin {
+    background-color: #00FF84;
+    border: none;
+    margin-top: 10px;
+}
+
+button.register {
+    background-color: #ffffff;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+a.forgot {
+    font-size: 12px;
+    display: block;
+    text-align: right;
+    margin-top: -10px;
+}
+
+span.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.admin-login-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 8px 14px;
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.admin-login-button:hover {
+    background-color: #222;
+    color: white;
+    border-color: #222;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

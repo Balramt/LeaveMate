@@ -1,0 +1,27 @@
+<!-- templates/leave_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Management Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Leave Management</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome, {{ username }}!</h2>
+        <h3>Select an action:</h3>
+        <ul>
+            <li><a href="/apply_leave/apply">Apply for Leave</a></li>
+            <li><a href="/leave/view">View All Leaves</a></li>
+            <li><a href="/leave/filter">Filter Leaves</a></li>
+        </ul>
+    </main>
+</body>
+</html>

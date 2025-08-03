@@ -1,40 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/style.css?v=6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<div class="container">
-    <h1>Admin Login</h1>
-    <p>Please enter your admin credentials</p>
-    <hr>
+<a href="/" class="logout-button">User Login</a>
 
-    <form method="post" action="/admin/login">
-        <label>Username *</label>
-        <input name="username" type="text" required placeholder="Enter admin username" />
+<div class="login-container">
+    <div class="login-card enhanced">
+        <h1 class="glow-text">🔐 Admin Login</h1>
+        <p>Enter your admin credentials</p>
 
-        <label>Password *</label>
-        <div style="position: relative;">
-            <input name="password" type="password" required id="admin-password" placeholder="Password" />
-            <span id="eye-icon" class="toggle-password" onclick="togglePassword()" style="display: none;">👁</span>
-        </div>
+        <form method="post" action="/admin/login">
+            <label for="username">Username *</label>
+            <input name="username" type="text" id="username" required placeholder="Enter admin username" />
 
-        {% if error %}
-            <p style="color:red;">{{ error }}</p>
-        {% endif %}
+            <label for="admin-password">Password *</label>
+            <div class="password-wrapper">
+                <input name="password" type="password" id="admin-password" required placeholder="Enter password" />
+                <span class="eye-icon" onclick="togglePassword('admin-password', this)">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
 
-        <button type="submit" class="signin">Sign in as Admin</button>
-    </form>
+            {% if error %}
+                <p class="error-message show-error">{{ error }}</p>
+            {% endif %}
 
-    <hr>
-    <p style="text-align: center;">Not a member?</p>
-    <button class="register">Create a free account</button>
-    <p style="text-align: center;">Back to <a href="/">User Login</a></p>
+            <button type="submit" class="signin gradient-bg">Sign in as Admin</button>
+        </form>
+
+        <hr class="divider">
+        <p class="member-text">Not a member?</p>
+        <form method="get" action="/register">
+            <button class="register gradient-outline">Create a free account</button>
+        </form>
+    </div>
 </div>
 
-<script>
-function togglePassword() {
-    const input = document.getElementById('admin-password');
-    input.type = input.type === 'password' ? 'text' : 'password';
-}
-</script>
+<script src="/static/toggle_password.js?v=1"></script>
 {% endblock %}

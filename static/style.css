@@ -288,3 +288,308 @@ span.toggle-password {
     animation: fadeIn 0.5s ease-in;
 }
 
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #12c2e9, #4facfe, #c471ed, #f64f59, #ff6a00, #12c2e9, #4facfe, #c471ed, #f64f59, #ff6a00);
+    min-height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 1rem;
+}
+
+.login-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.6s ease-in-out;
+    text-align: center;
+}
+
+.login-card h1 {
+    font-size: 26px;
+    margin-bottom: 0.5rem;
+}
+
+.login-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhancements */
+.login-card.enhanced {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: slideIn 0.7s ease-in-out;
+}
+
+.glow-text {
+    text-shadow: 0 0 8px #00c6ff;
+    font-weight: bold;
+}
+
+.divider {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* Floating Labels */
+.form-group {
+    position: relative;
+    margin-top: 20px;
+}
+
+.floating input {
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.floating label {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    background: white;
+    padding: 0 4px;
+    color: #888;
+    font-size: 14px;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+.floating input:focus + label,
+.floating input:not(:placeholder-shown):valid + label {
+    top: -10px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.glow-border {
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.glow-border:hover {
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+.error-message.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+/* Enhanced gradient background */
+.gradient-bg {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+}
+
+.gradient-bg:hover {
+    background: linear-gradient(135deg, #0072ff, #0052cc);
+}
+
+/* Error message red & visible */
+.error-message.show-error {
+    color: #e63946;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Floating Label Input Style */
+.floating input {
+    background: #f5f7fa;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 12px 10px;
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+}
+
+.floating label {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    color: #999;
+    font-size: 14px;
+    background-color: white;
+    padding: 0 4px;
+    transition: all 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.floating input:focus + label,
+.floating input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+/* Enhanced link */
+.forgot {
+    font-size: 13px;
+    margin-top: 10px;
+    color: #007bff;
+    text-align: right;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+
+.forgot:hover {
+    color: #004aad;
+    text-decoration: underline;
+}
+
+/* Text above register */
+.member-text {
+    font-size: 14px;
+    margin: 10px 0 5px 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Styled register button */
+.gradient-outline {
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gradient-outline:hover {
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    transform: scale(1.05);
+}
+
+.oval-button.with-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 10px;
+    height: 100px;
+    transition: all 0.3s ease-in-out;
+}
+
+.oval-button.with-icon i {
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.section:hover .oval-button.with-icon i {
+    transform: scale(1.2) rotate(8deg);
+}
+
+.section:hover .oval-button.with-icon span {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.leave-details {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+    transition: all 0.4s ease-in-out;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    backdrop-filter: blur(3px);
+    pointer-events: none;
+}
+.leave-section:hover .leave-details {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+
+.leave-details .arrow {
+    transition: transform 0.2s ease;
+}
+
+.leave-details .arrow:hover {
+    transform: translateX(5px);
+    color: #333;
+}
+/* Animation for Leave icon */
+.leave-section .oval-button i {
+    transition: transform 0.4s ease-in-out;
+}
+
+.leave-section:hover .oval-button i {
+    animation: bounceIcon 0.6s ease-in-out;
+}
+
+/* Keyframes for bounce animation */
+@keyframes bounceIcon {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-8px); }
+    50%  { transform: translateY(4px); }
+    70%  { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+

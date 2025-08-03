@@ -1,34 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/style.css?v=2">
+<link rel="stylesheet" href="/static/style.css?v=3">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- Logout button -->
 <a href="/adminlogout" class="logout-button">Logout</a>
 
 <div class="header">
-    <h1>Welcome Admin, {{ username }}!</h1>
-    <p class="username">Select a section below</p>
+    <h1>👨‍💼 Welcome Admin!</h1>
 </div>
 
 <div class="sections">
     <!-- Leave Section (Clickable) -->
     <div class="section">
-        <a href="/admin/leave-dashboard" class="oval-button clickable-leave">Leave</a>
+        <a href="/admin/leave-dashboard" class="oval-button with-icon clickable-leave">
+            <i class="fas fa-calendar-check"></i>
+            <span>Leave</span>
+        </a>
     </div>
 
     <!-- Deployment Section -->
     <div class="section">
-        <div class="oval-button">Deployment</div>
+        <div class="oval-button with-icon">
+            <i class="fas fa-rocket"></i>
+            <span>Deployment</span>
+        </div>
     </div>
 
     <!-- Compoff Section -->
     <div class="section">
-        <div class="oval-button">Compoff</div>
+        <div class="oval-button with-icon">
+            <i class="fas fa-user-clock"></i>
+            <span>Compoff</span>
+        </div>
     </div>
 </div>
-
-
-
-
 {% endblock %}

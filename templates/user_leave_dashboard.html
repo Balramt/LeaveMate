@@ -3,49 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>User Dashboard</title>
-    <!-- <link rel="stylesheet" href="/static/style.css"> -->
-     <link rel="stylesheet" href="/static/style.css?v=2">
-
+    <link rel="stylesheet" href="/static/style.css?v=3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Logout button (top-right corner) -->
+    <!-- Logout button -->
     <a href="/logout" class="logout-button">Logout</a>
-    
+
     <div class="header">
-        <h1>Welcome, {{ username }}</h1>
-        <p class="username">Select a section below</p>
+        <h1>👋 Welcome, {{ username }}</h1>
     </div>
 
     <div class="sections">
         <!-- Leave Section -->
-        <!-- <div class="section leave-section">
-            <div class="oval-button">Leave</div>
-            <div class="leave-details">
-                <div class="arrow">Sick Leave: 2</div>
-                <div class="arrow">Personal Leave: 4</div>
-                <div class="arrow">Family Emergency: 3</div>
+        <div class="section leave-section">
+            <div class="oval-button with-icon">
+                <i class="fas fa-calendar-check"></i>
+                <span>Leave</span>
             </div>
-        </div> -->
-
-         <div class="section leave-section">
-            <div class="oval-button">Leave</div>
             <div class="leave-details">
-                <div class="arrow">Sick Leave: {{ leave_totals["Sick Leave"] }}</div>
-                <div class="arrow">Personal Leave: {{ leave_totals["Personal Leave"] }}</div>
-                <div class="arrow">Family Emergency: {{ leave_totals["Family Emergency"] }}</div>
+                <div class="arrow">🩺 Sick Leave: {{ leave_totals["Sick Leave"] }}</div>
+                <div class="arrow">🏖️ Personal Leave: {{ leave_totals["Personal Leave"] }}</div>
+                <div class="arrow">👨‍👩‍👧‍👦 Family Emergency: {{ leave_totals["Family Emergency"] }}</div>
             </div>
         </div>
 
         <!-- Deployment Section -->
         <div class="section">
-            <div class="oval-button">Deployment</div>
+            <div class="oval-button with-icon">
+                <i class="fas fa-rocket"></i>
+                <span>Deployment</span>
+            </div>
         </div>
 
         <!-- Compoff Section -->
         <div class="section">
-            <div class="oval-button">Compoff</div>
+            <div class="oval-button with-icon">
+                <i class="fas fa-user-clock"></i>
+                <span>Compoff</span>
+            </div>
         </div>
     </div>
+
 </body>
 </html>

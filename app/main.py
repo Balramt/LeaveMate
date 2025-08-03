@@ -3,8 +3,8 @@ from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from app.auth import router as auth_router
-#from app.routes import leave
 from app.routes.leave import router as leave_router
+from app.routes.admin_leave import router as admin_router
 from app.db import engine, Base
 import logging
 import traceback
@@ -28,3 +28,4 @@ async def on_startup():
 
 app.include_router(auth_router)
 app.include_router(leave_router)
+app.include_router(admin_router)

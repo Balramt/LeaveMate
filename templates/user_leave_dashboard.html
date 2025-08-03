@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+     <link rel="stylesheet" href="/static/style.css?v=2">
+
+</head>
+<body>
+
+    <!-- Logout button (top-right corner) -->
+    <a href="/logout" class="logout-button">Logout</a>
+    
+    <div class="header">
+        <h1>Welcome, {{ username }}</h1>
+        <p class="username">Select a section below</p>
+    </div>
+
+    <div class="sections">
+        <!-- Leave Section -->
+        <div class="section leave-section">
+            <div class="oval-button">Leave</div>
+            <div class="leave-details">
+                <div class="arrow">Sick Leave: 2</div>
+                <div class="arrow">Personal Leave: 4</div>
+                <div class="arrow">Family Emergency: 3</div>
+            </div>
+        </div>
+
+        <!-- Deployment Section -->
+        <div class="section">
+            <div class="oval-button">Deployment</div>
+        </div>
+
+        <!-- Compoff Section -->
+        <div class="section">
+            <div class="oval-button">Compoff</div>
+        </div>
+    </div>
+</body>
+</html>

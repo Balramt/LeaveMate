@@ -28,16 +28,7 @@ label {
     font-weight: bold;
 }
 
-input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: block; /* Ensures full-width stacking */
-}
-
-
+input[type="number"],
 input[type="email"],
 input[type="password"],
 input[type="text"] {
@@ -46,7 +37,7 @@ input[type="text"] {
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: block; /* Ensures full-width stacking */
+    display: block;
 }
 
 button {
@@ -106,3 +97,120 @@ span.toggle-password {
     border-color: #222;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* ------------------------- user_leave_dashboard styles ------------------------- */
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.username {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sections {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.section {
+    position: relative;
+    width: 180px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Enhanced oval button with gradient, glow, and scale on hover */
+.oval-button {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px;
+    width: 160px;
+    height: 80px;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.oval-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    background: linear-gradient(135deg, #0056b3, #003f8a);
+}
+
+/* Animation for sub-options */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.leave-details {
+    display: none;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(10px);
+}
+
+.leave-section:hover .leave-details {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.arrow {
+    margin: 6px 0;
+    font-size: 14px;
+    white-space: nowrap;
+    transform: rotate(-10deg);
+    animation: fadeInUp 0.3s ease;
+}
+
+.arrow::before {
+    content: "↗";
+    margin-right: 6px;
+    color: #007bff;
+}
+
+.logout-button {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
+    z-index: 999;
+    opacity: 0.9;
+}
+
+.logout-button:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    box-shadow: 0 0 15px rgba(255, 78, 80, 0.6);
+    opacity: 1;
+}
+

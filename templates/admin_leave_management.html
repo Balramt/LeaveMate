@@ -3,6 +3,7 @@
 {% block content %}
 <!-- <link rel="stylesheet" href="/static/style.css"> -->
 <!-- <link rel="stylesheet" href="/static/style.css?v=2"> -->
+ 
 
 <div class="container">
     <h1 class="center-text">Employee Leave Management</h1>
@@ -51,4 +52,6 @@ function updateNameFromDropdown(select) {
     document.getElementById("selected_name").value = selected.getAttribute("data-name");
 }
 </script>
+<!-- ✅ Add the JavaScript file here -->
+<script src="/static/date_restrict.js?v={{ range(1000)|random }}"></script>
 {% endblock %}

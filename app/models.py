@@ -22,24 +22,30 @@ class Leave(Base):
     __tablename__ = "leave"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    date = Column(Date, nullable=False)
+    employee_id = Column(Integer, nullable=False)   # New field
+    name = Column(String, nullable=False)           # Employee name
+    start_date = Column(Date, nullable=False)       # New field
+    end_date = Column(Date, nullable=False)         # New field
     comment = Column(String, nullable=True)
 
 # ----------------- Pydantic Schemas -----------------
 
 class LeaveRead(BaseModel):
     id: int
+    employee_id: int
     name: str
-    date: date
+    start_date: date
+    end_date: date
     comment: Optional[str]
 
     class Config:
         orm_mode = True
 
 class LeaveCreate(BaseModel):
+    employee_id: int
     name: str
-    date: date
+    start_date: date
+    end_date: date
     comment: Optional[str] = None
 
 class UserLogin(BaseModel):
@@ -57,4 +63,3 @@ class UserCreate(BaseModel):
 
     class Config:
         orm_mode = True
-

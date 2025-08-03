@@ -7,7 +7,7 @@ from passlib.context import CryptContext
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.models import User
+from app.models import User, Leave
 from app.db import get_db
 
 
@@ -17,16 +17,44 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 print("✅ leave.py loaded")
 print("✅ Has router:", 'router' in globals())
-# Leave page (only accessible if logged in)
+
+# ----------------- Leave Dashboard (only accessible if logged in)-----------------
+
 @router.get("/uleaveDashboard", response_class=HTMLResponse)
-async def show_leave_page(request: Request):
+async def show_leave_page(request: Request, db: AsyncSession = Depends(get_db)):
     if not request.session.get("user_logged_in"):
         return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
 
+    username = request.session.get("username")
+
+    # Fetch user object to get full name (needed for filtering leaves)
+    result = await db.execute(select(User).where(User.username == username))
+    user = result.scalar_one_or_none()
+    if not user:
+        return RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
+
+    # Fetch all leaves assigned to this user
+    result = await db.execute(select(Leave).where(Leave.employee_id == user.id))
+    leaves = result.scalars().all()
+
+    # Calculate total leave days per type
+    leave_totals = {
+        "Sick Leave": 0,
+        "Personal Leave": 0,
+        "Family Emergency": 0
+    }
+
+    for leave in leaves:
+        if leave.comment in leave_totals:
+            days = (leave.end_date - leave.start_date).days + 1
+            leave_totals[leave.comment] += days
+
     return templates.TemplateResponse("user_leave_dashboard.html", {
         "request": request,
-        "username": request.session.get("username")
+        "username": username,
+        "leave_totals": leave_totals
     })
+
 
 # GET: Show user registration form
 @router.get("/register", response_class=HTMLResponse)

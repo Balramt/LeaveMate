@@ -19,12 +19,21 @@
 
     <div class="sections">
         <!-- Leave Section -->
-        <div class="section leave-section">
+        <!-- <div class="section leave-section">
             <div class="oval-button">Leave</div>
             <div class="leave-details">
                 <div class="arrow">Sick Leave: 2</div>
                 <div class="arrow">Personal Leave: 4</div>
                 <div class="arrow">Family Emergency: 3</div>
+            </div>
+        </div> -->
+
+         <div class="section leave-section">
+            <div class="oval-button">Leave</div>
+            <div class="leave-details">
+                <div class="arrow">Sick Leave: {{ leave_totals["Sick Leave"] }}</div>
+                <div class="arrow">Personal Leave: {{ leave_totals["Personal Leave"] }}</div>
+                <div class="arrow">Family Emergency: {{ leave_totals["Family Emergency"] }}</div>
             </div>
         </div>
 

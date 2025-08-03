@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -17,8 +18,10 @@ async def log_exception(request, exc):
     traceback.print_exc()
     return HTMLResponse("Internal Server Error", status_code=500)
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app.add_middleware(SessionMiddleware, secret_key="super-secret-key")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 
 # Create DB tables
 @app.on_event("startup")

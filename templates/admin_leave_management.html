@@ -1,15 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/style.css">
+<!-- <link rel="stylesheet" href="/static/style.css"> -->
+<!-- <link rel="stylesheet" href="/static/style.css?v=2"> -->
 
 <div class="container">
-    <h1>Employee Leave Management</h1>
-    <p>Here you can view and manage employee leave records.</p>
+    <h1 class="center-text">Employee Leave Management</h1>
+    {% if success %}
+     <p class="success-message">✅ <strong> </strong>{{comment}} </strong> assigned successfully for <strong>{{ employee_name }}</strong>!</p>
+    {% endif %}
 
-    <!-- Placeholder content -->
-    <p>(This page will later include leave records, approval/rejection options, etc.)</p>
+    <form method="post" action="/admin/assign-leave" class="admin-leave-form">
+        <label for="employee_id">Employee Name *</label>
+        <select name="employee_id" id="employee_id" required onchange="updateNameFromDropdown(this)" class="styled-select">
+            <option value="">-- Select Employee --</option>
+            {% for user in users %}
+                <option value="{{ user.id }}" data-name="{{ user.name }}">{{ user.name }} (ID: {{ user.id }})</option>
+            {% endfor %}
+        </select>
 
-    <a href="/aleaveDashboard">← Back to Dashboard</a>
+        <input type="hidden" name="name" id="selected_name" />
+
+        <label for="start_date">Start Date *</label>
+        <input type="date" name="start_date" required />
+
+        <label for="end_date">End Date *</label>
+        <input type="date" name="end_date" required />
+
+        <label for="comment">Comment *</label>
+        <select name="comment" required class="styled-select">
+            <option value="">-- Select Leave Type --</option>
+            <option value="Sick Leave">😷 Sick Leave</option>
+            <option value="Personal Leave">🏖️ Personal Leave</option>
+            <option value="Family Emergency">🚨 Family Emergency</option>
+        </select>
+
+        <button type="submit" class="fancy-button">➕ Assign Leave</button>
+    </form>
+
+    <div class="center-text margin-top">
+        <a href="/aleaveDashboard" class="back-link">← Admin Dashboard</a>
+        <a href="/admin/leave-dashboard" class="back-link">← Back</a>
+        
+    </div>
 </div>
+
+<script>
+function updateNameFromDropdown(select) {
+    const selected = select.options[select.selectedIndex];
+    document.getElementById("selected_name").value = selected.getAttribute("data-name");
+}
+</script>
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/style.css?v=3">
+
+<div class="container">
+    <h1 class="center-text">📝 Edit Leave</h1>
+
+    <form method="post" action="/admin/update-leave/{{ leave.id }}" class="edit-leave-form">
+        <div class="form-group">
+            <label>Employee:</label>
+            <input type="text" value="{{ leave.name }}" disabled class="readonly-input">
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Leave Type:</label>
+            <select name="comment" id="comment" required>
+                <option value="Sick Leave" {% if leave.comment == 'Sick Leave' %}selected{% endif %}>Sick Leave</option>
+                <option value="Personal Leave" {% if leave.comment == 'Personal Leave' %}selected{% endif %}>Personal Leave</option>
+                <option value="Family Emergency" {% if leave.comment == 'Family Emergency' %}selected{% endif %}>Family Emergency</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" value="{{ leave.start_date }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" value="{{ leave.end_date }}" required>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="oval-button clickable-save">💾 Save</button>
+            <a href="/admin/modify-leave" class="oval-button clickable-cancel">↩ Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -17,6 +17,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 @router.get("/", response_class=HTMLResponse)
 async def show_user_login_page(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
+    #return HTMLResponse(content="✅ Server is working", status_code=200)
 
 # POST: Handle user login
 @router.post("/Userlogin", response_class=HTMLResponse)

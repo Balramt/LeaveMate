@@ -214,3 +214,77 @@ span.toggle-password {
     opacity: 1;
 }
 
+
+/* ----------------- Admin Leave Management Styles ----------------- */
+
+.center-text {
+    text-align: center;
+}
+
+.margin-top {
+    margin-top: 2rem;
+}
+
+.admin-leave-form {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.styled-select {
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+/* Fancy gradient button */
+.fancy-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.3s ease;
+    margin-top: 10px;
+}
+
+.fancy-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #eee;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: #333;
+    color: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease-in;
+}
+

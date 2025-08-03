@@ -7,3 +7,4 @@ itsdangerous
 aiosqlite
 sqlalchemy
 passlib[bcrypt]
+fpdf

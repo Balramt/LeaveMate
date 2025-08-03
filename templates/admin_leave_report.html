@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/style.css?v=3">
+
+<div class="container">
+    <h1 class="center-text">📊 Leave Report Generator</h1>
+
+    <form method="get" action="/admin/leave-report" class="report-form">
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" required value="{{ start_date }}">
+
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" required value="{{ end_date }}">
+
+        <label for="employee_id">Employee (Optional):</label>
+        <select name="employee_id" class="styled-select">
+            <option value="">All Employees</option>
+            {% for user in users %}
+                <option value="{{ user.id }}" {% if selected_id == user.id %}selected{% endif %}>{{ user.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="per_page">Per Page:</label>
+        <select name="per_page" onchange="this.form.submit()">
+            <option value="5" {% if per_page == 5 %}selected{% endif %}>5</option>
+            <option value="10" {% if per_page == 10 %}selected{% endif %}>10</option>
+            <option value="25" {% if per_page == 25 %}selected{% endif %}>25</option>
+            <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
+        </select>
+
+        <button type="submit" class="fancy-button">📥 Generate Report</button>
+
+        {% if leaves %}
+        <div class="download-section">
+            <label>Download As:</label>
+            <a href="/admin/leave-report/download?format=csv&start_date={{ start_date }}&end_date={{ end_date }}&employee_id={{ selected_id or '' }}" class="download-btn">CSV</a>
+            <a href="/admin/leave-report/download?format=pdf&start_date={{ start_date }}&end_date={{ end_date }}&employee_id={{ selected_id or '' }}" class="download-btn">PDF</a>
+        </div>
+        {% endif %}
+    </form>
+
+    {% if leaves %}
+        <h2>Results:</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Leave Type</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for leave in leaves %}
+                <tr>
+                    <td>{{ leave.name }}</td>
+                    <td>{{ leave.comment }}</td>
+                    <td>{{ leave.start_date }}</td>
+                    <td>{{ leave.end_date }}</td>
+                    <td>{{ (leave.end_date - leave.start_date).days + 1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- ✅ Pagination Controls -->
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="?start_date={{ start_date }}&end_date={{ end_date }}&employee_id={{ selected_id or '' }}&page={{ page - 1 }}&per_page={{ per_page }}">&laquo; Prev</a>
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+                {% if p == page %}
+                    <span class="current-page">{{ p }}</span>
+                {% else %}
+                    <a href="?start_date={{ start_date }}&end_date={{ end_date }}&employee_id={{ selected_id or '' }}&page={{ p }}&per_page={{ per_page }}">{{ p }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page < total_pages %}
+                <a href="?start_date={{ start_date }}&end_date={{ end_date }}&employee_id={{ selected_id or '' }}&page={{ page + 1 }}&per_page={{ per_page }}">Next &raquo;</a>
+            {% endif %}
+        </div>
+
+        <h3>📌 Summary:</h3>
+        <ul>
+            <li>Total Leaves: {{ summary.total }}</li>
+            <li>😷 Sick Leave: {{ summary.sick }}</li>
+            <li>🏖️ Personal Leave: {{ summary.personal }}</li>
+            <li>🚨 Family Emergency: {{ summary.family }}</li>
+        </ul>
+    {% endif %}
+
+    <div class="center-text margin-top">
+        <a href="/aleaveDashboard" class="back-link">← Admin Dashboard</a>
+        <a href="/admin/leave-dashboard" class="back-link">← Back</a>
+    </div>
+</div>
+{% endblock %}

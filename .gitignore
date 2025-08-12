@@ -3,20 +3,31 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
+# Virtual envs
 leavemate/
 venv/
 .env/
 
-# Distribution / packaging
+# Distribution
 build/
 dist/
 *.egg-info/
 
-# IDE files
+# IDE
 .vscode/
 .idea/
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
+
+# Local data
+data/
+
+# Git files
+.git
+.gitignore
+render.yaml
+
+# Node / frontend
+node_modules/

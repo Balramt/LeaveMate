@@ -19,10 +19,10 @@ COPY . .
 
 # 6. Environment variables
 ENV PORT=8000 \
-    DATABASE_URL="sqlite+aiosqlite:///./roaster.db"
+    DATABASE_URL="sqlite+aiosqlite:///./data/roaster.db"
 
 # 7. Persist the project directory (so roaster.db remains)
-VOLUME ["/usr/src/app"]
+#VOLUME ["/usr/src/app"]
 
 # 8. Launch the FastAPI app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

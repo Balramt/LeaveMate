@@ -11,4 +11,5 @@ services:
       - key: PORT
         value: "8000"
       - key: DATABASE_URL
-        value: sqlite+aiosqlite:///data/roaster.db
+        value: sqlite+aiosqlite:///./data/roaster.db
+              

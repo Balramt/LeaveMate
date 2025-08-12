@@ -21,9 +21,6 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Local data
-data/
-
 # Git files
 .git
 .gitignore

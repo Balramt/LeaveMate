@@ -27,7 +27,7 @@ data/
 # Git files
 .git
 .gitignore
-render.yaml
+#render.yaml
 
 # Node / frontend
 node_modules/

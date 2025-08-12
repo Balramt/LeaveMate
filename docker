@@ -4,26 +4,25 @@ FROM python:3.11-slim
 # 2. Working directory
 WORKDIR /usr/src/app
 
-# 3. Install system dependencies and create /data
+# 3. Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         libsqlite3-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /data
+    && rm -rf /var/lib/apt/lists/*
 
 # 4. Install Python packages
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copy application code
+# 5. Copy application code and database
 COPY . .
 
-# 6. Set environment variables
+# 6. Environment variables
 ENV PORT=8000 \
-    DATABASE_URL="sqlite+aiosqlite:///data/roaster.db"
+    DATABASE_URL="sqlite+aiosqlite:///./roaster.db"
 
-# 7. Declare volume for SQLite persistence
-VOLUME ["/data"]
+# 7. Persist the project directory (so roaster.db remains)
+VOLUME ["/usr/src/app"]
 
-# 8. Launch Uvicorn
+# 8. Launch the FastAPI app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

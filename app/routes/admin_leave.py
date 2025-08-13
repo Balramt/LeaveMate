@@ -14,7 +14,7 @@ from fpdf import FPDF
 from fastapi.responses import StreamingResponse
 from typing import Optional, Union
 from math import ceil
-
+import os
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")

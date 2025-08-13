@@ -1,7 +1,12 @@
+<div style="background:yellow;color:red;padding:5px;z-index:9999;position:fixed;top:0;left:0;font-weight:bold">
+DEBUG TEMPLATE: D:\LeaveMate\templates\admin_dashboard.html
+</div>
+
 {% extends "base.html" %}
 
 {% block content %}
 <link rel="stylesheet" href="/static/style.css?v=3">
+<link rel="stylesheet" href="/static/chatbot.css?v=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- Logout button -->
@@ -36,4 +41,29 @@
         </div>
     </div>
 </div>
+
+<!-- ========= Floating Chatbot Widget ========= -->
+<div id="chatbot-widget">
+    <div id="chatbot-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot-box">
+        <div id="chatbot-header">
+            🤖 AI Assistant
+            <span id="chatbot-close" onclick="toggleChatbot()">&times;</span>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-typing" style="display:none;">
+            Bot is typing<span class="dots"></span>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message..." 
+                   onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- ========= Chatbot JS ========= -->
+{% block scripts %}
+<script src="/static/chatbot.js?v=1"></script>
 {% endblock %}

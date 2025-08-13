@@ -1,0 +1,19 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      - hey
+
+  - intent: add_leave
+    examples: |
+      - add leave for John from 2025-08-15 to 2025-08-20
+      - assign vacation to Mary between 1st Sept and 5th Sept
+      - request leave for Alex for two days starting tomorrow
+
+  - intent: delete_user
+    examples: |
+      - remove user John
+      - delete employee Mary
+      - remove account for Alex

@@ -8,3 +8,4 @@ aiosqlite
 sqlalchemy
 passlib[bcrypt]
 fpdf
+httpx
